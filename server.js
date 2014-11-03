@@ -24,7 +24,8 @@ var onEveryHour = false;
 var onEveryDay = false;
 var time = "00:00:00";
 
-app.listen(8080);				// start the server listening
+var port = process.env.PORT || 8080;
+app.listen(port);				// start the server listening
 
 app.use('/js', express.static(__dirname + '/js'));
 
