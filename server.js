@@ -78,7 +78,7 @@ function turnOnEveryDay( req, res ) {
 		
 		parseData.save( null, {
 			success: function( parseData ) {
-				
+
 				parseData.set("onEveryDay", false);
 			} 
 		});
@@ -91,14 +91,14 @@ function turnOnEveryDay( req, res ) {
 function checkForHour( req, res ) {
 
 	onEveryHour = parseData.get("onEveryHour");
-	res.write("onEveryHour = " + onEveryHour );
+	res.write( onEveryHour );
 	res.end();
 }
 
 function checkForDay( req, res ) {
 
 	onEveryDay = parseData.get("onEveryDay");
-	res.write("onEveryDay = " + onEveryDay );
+	res.write( onEveryDay );
 	res.end();
 }
 
