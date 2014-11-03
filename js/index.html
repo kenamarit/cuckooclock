@@ -40,41 +40,43 @@
 <script>
 
    
+    $( document ).ready( function() {
+        $('#setTime').click( function(e) {
+            var h = $('#setHours').val();
+            var m = $('#setMinutes').val();
+            var s = $('#setSeconds').val();
 
-    $('#setTime').click( function(e) {
-        var h = $('#setHours').val();
-        var m = $('#setMinutes').val();
-        var s = $('#setSeconds').val();
+            $.get( "/time/" + h + ":" + m + ":" + s, function(data) {
+                console.log('time is set');
+            });
 
-        $.get( "/time/" + h + ":" + m + ":" + s, function(data) {
-            console.log('time is set');
         });
 
-    });
+        $("#hourOn").click( function(e) {
+            $.get( "/hour/on", function( data ) {
+              console.log('clock is on every hour');
+            });
+        });
 
-    $("#hourOn").click( function(e) {
-        $.get( "/hour/on", function( data ) {
-          console.log('clock is on every hour');
+        $("#hourOff").click( function(e) {
+            $.get( "/hour/off", function( data ) {
+              console.log('clock is off every hour');
+            });
+        });
+
+        $("#dayOn").click( function(e) {
+            $.get( "/day/on", function( data ) {
+              console.log('clock is on every day');
+            });
+        });
+
+        $("#dayOff").click( function(e) {
+            $.get( "/day/off", function( data ) {
+              console.log('clock is off every day');
+            });
         });
     });
-
-    $("#hourOff").click( function(e) {
-        $.get( "/hour/off", function( data ) {
-          console.log('clock is off every hour');
-        });
-    });
-
-    $("#dayOn").click( function(e) {
-        $.get( "/day/on", function( data ) {
-          console.log('clock is on every day');
-        });
-    });
-
-    $("#dayOff").click( function(e) {
-        $.get( "/day/off", function( data ) {
-          console.log('clock is off every day');
-        });
-    });
+    
 
 
 </script>
