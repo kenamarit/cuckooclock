@@ -112,7 +112,7 @@ function getTime( req, res ) {
 }
 
 app.get('/', function (request, response) {
-   response.sendfile('index.html');
+   response.sendfile('js/index.html');
       //console.log(request.ip);
 });
 
