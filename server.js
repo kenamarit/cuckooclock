@@ -113,7 +113,7 @@ function getTime( req, res ) {
 
 app.get('/', function (request, response) {
    response.sendfile('index.html');
-      console.log(request.ip);
+      //console.log(request.ip);
 });
 
 app.get('/time', getTime );
