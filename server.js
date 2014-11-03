@@ -120,6 +120,9 @@ function getTime( req, res ) {
 
 	time = parseData.get("time");
 
+	console.log(h);
+	console.log(time);
+
 	if( time == h ) {
 		res.write('t');
 	} else {
