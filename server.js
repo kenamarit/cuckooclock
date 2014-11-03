@@ -78,6 +78,7 @@ function turnOnEveryDay( req, res ) {
 		
 		parseData.save( null, {
 			success: function( parseData ) {
+				
 				parseData.set("onEveryDay", false);
 			} 
 		});
