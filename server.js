@@ -91,14 +91,14 @@ function turnOnEveryDay( req, res ) {
 function checkForHour( req, res ) {
 
 	onEveryHour = parseData.get("onEveryHour");
-	res.write( onEveryHour );
+	res.write( onEveryHour + '' );
 	res.end();
 }
 
 function checkForDay( req, res ) {
 
 	onEveryDay = parseData.get("onEveryDay");
-	res.write( onEveryDay );
+	res.write( onEveryDay + '' );
 	res.end();
 }
 
