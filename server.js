@@ -109,7 +109,14 @@ function setTime( req, res ) {
 }
 
 function getTime( req, res ) {
-	res.write(time + '');
+	var d = new Date();
+	var h = d.getHours();
+
+	if( time == h ) {
+		res.write('t');
+	} else {
+		res.write('f');
+	}
 	res.end();
 }
 
