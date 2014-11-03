@@ -109,7 +109,7 @@ function setTime( req, res ) {
 }
 
 function getTime( req, res ) {
-	res.write("Time is: " + time);
+	res.write(time + '');
 	res.end();
 }
 

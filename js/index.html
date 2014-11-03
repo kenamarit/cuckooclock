@@ -41,13 +41,13 @@
 
    
     $( document ).ready( function() {
-        
+
         $('#setTime').on('click',  function(e) {
             var h = $('#setHours').val();
             var m = $('#setMinutes').val();
             var s = $('#setSeconds').val();
 
-            $.get( "/time/" + h + ":" + m + ":" + s, function(data) {
+            $.get( "/time/" + h, function(data) {
                 console.log('time is set');
             });
 
