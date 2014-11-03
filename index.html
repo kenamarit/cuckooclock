@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="/js/jquery.js"></script>
+
+<title>
+</title>
+<style>
+
+</style>
+
+</head>
+<body>
+	
+<h1>Welcome to cuckoo clock setting.</h1>
+<P>Hour</P>
+
+
+    <input id="hourOn" type = "radio" name="hour" value = "on">On<br>
+    <input id="hourOff" type = "radio" name="hour" value = "off">Off<br>
+
+
+<P>Day</P>
+<input id="dayOn" type = "radio" name="day" value = "on">On<br>
+<input id="dayOff" type = "radio" name ="day" value = "off">Off<br>
+<div>
+
+
+
+               	<h2>Set Time</h2>
+                <textarea id="setHours"></textarea>
+                <textarea id="setMinutes"></textarea>
+                <textarea id="setSeconds"></textarea>
+                <form>
+          
+                    <input type="button" id="setTime" value="Submit">
+
+                </form>
+</div>
+<script>
+
+   
+
+    $('#setTime').click( function(e) {
+        var h = $('#setHours').val();
+        var m = $('#setMinutes').val();
+        var s = $('#setSeconds').val();
+
+        $.get( "/time/" + h + ":" + m + ":" + s, function(data) {
+            console.log('time is set');
+        });
+
+    });
+
+    $("#hourOn").click( function(e) {
+        $.get( "/hour/on", function( data ) {
+          console.log('clock is on every hour');
+        });
+    });
+
+    $("#hourOff").click( function(e) {
+        $.get( "/hour/off", function( data ) {
+          console.log('clock is off every hour');
+        });
+    });
+
+    $("#dayOn").click( function(e) {
+        $.get( "/day/on", function( data ) {
+          console.log('clock is on every day');
+        });
+    });
+
+    $("#dayOff").click( function(e) {
+        $.get( "/day/off", function( data ) {
+          console.log('clock is off every day');
+        });
+    });
+
+
+</script>
+</body>
+</html>
