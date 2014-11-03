@@ -22,7 +22,7 @@ query.get("HZFWYDYbLt", {
 
 var onEveryHour = false;
 var onEveryDay = false;
-var time = "00:00:00";
+var time = "0";
 
 var port = process.env.PORT || 8080;
 app.listen(port);				// start the server listening
@@ -104,6 +104,12 @@ function checkForDay( req, res ) {
 
 function setTime( req, res ) {
 	time = req.params[0];
+
+	parseData.save( null, {
+		success: function( parseData ) {
+			parseData.set("time", time);
+		} 
+	});
 	res.write("Time is: " + time);
 	res.end();
 }
@@ -111,6 +117,8 @@ function setTime( req, res ) {
 function getTime( req, res ) {
 	var d = new Date();
 	var h = d.getHours();
+
+	time = parseData.get("time");
 
 	if( time == h ) {
 		res.write('t');
