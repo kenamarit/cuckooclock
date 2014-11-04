@@ -146,7 +146,7 @@ function turnOnGodMode( req, res ) {
 
 		res.write( "Godmode is " + gm + "." );
 
-	} else if( setting == 'off' ) {
+	} else if( gm == 'off' ) {
 		
 		parseData.save( null, {
 			success: function( parseData ) {
@@ -156,6 +156,7 @@ function turnOnGodMode( req, res ) {
 		});
 
 		res.write( "Godmode is " + gm + "." );
+		
 	} else {
 		res.write( "I don't understand your request." );
 	}
