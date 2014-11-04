@@ -14,11 +14,9 @@ query.get("HZFWYDYbLt", {
     parseData = pd;
   },
   error: function(object, error) {
-    // The object was not retrieved successfully.
     // error is a Parse.Error with an error code and message.
   }
 });
-
 
 var onEveryHour = false;
 var onEveryDay = false;
@@ -30,7 +28,7 @@ app.listen(port);				// start the server listening
 app.use('/js', express.static(__dirname + '/js'));
 
 // let the user know you started:
-console.log('Server is listening on port 8080');
+console.log('Server is listening on port ' + port);
 
 function turnOnEveryHour( req, res ) {
 	var setting = req.params[0];
@@ -43,19 +41,14 @@ function turnOnEveryHour( req, res ) {
 			} 
 		});
 
-		//onEveryHour = true;
-
 	} else if( setting == 'off' ) {
-		//onEveryHour = false;
 
 		parseData.save( null, {
 			success: function( parseData ) {
 				parseData.set("onEveryHour", false);
 			} 
 		});
-	} else {
-
-	}
+	} 
 
 	res.write("The setting is: " + setting + ", and onEveryHour = " + onEveryHour );
 	res.end();
@@ -65,8 +58,7 @@ function turnOnEveryDay( req, res ) {
 	var setting = req.params[0];
 
 	if( setting == 'on' ){
-		//onEveryDay = true; // for local only
-		
+
 		parseData.save( null, {
 			success: function( parseData ) {
 				parseData.set("onEveryDay", true);
@@ -74,7 +66,6 @@ function turnOnEveryDay( req, res ) {
 		});
 
 	} else if( setting == 'off' ) {
-		//onEveryDay = false;
 		
 		parseData.save( null, {
 			success: function( parseData ) {
@@ -120,8 +111,8 @@ function getTime( req, res ) {
 
 	time = parseData.get("time");
 
-	console.log(h);
-	console.log(time);
+	console.log("current hour = " + h);
+	console.log("set time = " + time);
 
 	if( time == h ) {
 		res.write('t');
@@ -133,7 +124,6 @@ function getTime( req, res ) {
 
 app.get('/', function (request, response) {
    response.sendfile('index.html');
-      //console.log(request.ip);
 });
 
 app.get('/time', getTime );
