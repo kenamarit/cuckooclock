@@ -122,6 +122,46 @@ function getTime( req, res ) {
 	res.end();
 }
 
+function godMode( req, res ) {
+	var god = parseData.get("godMode");
+	if( god == true ) { 
+		res.write('t');
+	} else {
+		res.write('f');
+	}
+}
+
+function turnOnGodMode( req, res ) {
+	var gm = req.params[0];
+
+	if( gm == 'on' ){
+
+		parseData.save( null, {
+			success: function( parseData ) {
+				parseData.set("godMode", true);
+			} 
+		});
+
+		res.write( "Godmode is " + gm + "." );
+
+	} else if( setting == 'off' ) {
+		
+		parseData.save( null, {
+			success: function( parseData ) {
+
+				parseData.set("godMode", false);
+			} 
+		});
+
+		res.write( "Godmode is " + gm + "." );
+	} else {
+		res.write( "I don't understand your request." );
+	}
+
+	res.end();
+}
+
+
 app.get('/', function (request, response) {
    response.sendfile('index.html');
 });
@@ -134,3 +174,6 @@ app.get('/day', checkForDay );
 
 app.get('/hour/*', turnOnEveryHour );
 app.get('/day/*', turnOnEveryDay );
+
+app.get('/godmode', godMode );
+app.get('/godmode/*', turnOnGodMode );
