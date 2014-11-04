@@ -129,6 +129,8 @@ function godMode( req, res ) {
 	} else {
 		res.write('f');
 	}
+
+	res.end();
 }
 
 function turnOnGodMode( req, res ) {
