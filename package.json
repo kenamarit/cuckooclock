@@ -1,12 +1,11 @@
 {
-  "name": "SimpleServer",
+  "name": "Cuckoo",
   "version": "0.0.1",
-  "description" : "simple server example to demonstrate headers of an HTTP request",
+  "description" : "A real cuckoo clock controlled via the web.",
   "author": {
-  	"name":"Tom Igoe"
+  	"name":"Ken Amarit, Yu Hu"
    },
   "dependencies": {
-    "ip": ">=0.3.0",
     "express": "3.x"
   },
   "engines": {

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="/js/jquery.js"></script>
+        <title>Cuckoo Clock</title>
+    </head>
+    <body>
+    	
+        <h1>Cuckoo Clock</h1>
+
+        <P>Hour</P>
+        <input id="hourOn" type = "radio" name="hour" value = "on">On<br>
+        <input id="hourOff" type = "radio" name="hour" value = "off">Off<br>
+
+        <P>Day</P>
+        <input id="dayOn" type = "radio" name="day" value = "on">On<br>
+        <input id="dayOff" type = "radio" name ="day" value = "off">Off<br>
+        
+        <div>
+
+
+
+                       	<h2>Set Time</h2>
+                        
+                        <select id="setHours">
+                            <option value="0">Midnight</option>
+                            <option value="1">1 AM</option>
+                            <option value="2">2 AM</option>
+                            <option value="3">3 AM</option>
+                            <option value="4">4 AM</option>
+                            <option value="5">5 AM</option>
+                            <option value="6">6 AM</option>
+                            <option value="7">7 AM</option>
+                            <option value="8">8 AM</option>
+                            <option value="9">9 AM</option>
+                            <option value="10">10 AM</option>
+                            <option value="11">11 AM</option>
+                            <option value="12">Noon</option>
+                            <option value="13">1 PM</option>
+                            <option value="14">2 PM</option>
+                            <option value="15">3 PM</option>
+                            <option value="16">4 PM</option>
+                            <option value="17">5 PM</option>
+                            <option value="18">6 PM</option>
+                            <option value="19">7 PM</option>
+                            <option value="20">8 PM</option>
+                            <option value="21">9 PM</option>
+                            <option value="22">10 PM</option>
+                            <option value="23">11 PM</option>
+
+
+                        </select>
+        </div>
+        <script>
+
+           
+            $( document ).ready( function() {
+
+                $('#setTime').on('click',  function(e) {
+                    var h = $('#setHours').val();
+                    
+                    $.get( "/time/" + h, function(data) {
+                        console.log('time is set');
+                    });
+
+                });
+
+                $("#hourOn").on('click', function(e) {
+                    $.get( "/hour/on", function( data ) {
+                      console.log('clock is on every hour');
+                    });
+                });
+
+                $("#hourOff").on('click', function(e) {
+                    $.get( "/hour/off", function( data ) {
+                      console.log('clock is off every hour');
+                    });
+                });
+
+                $("#dayOn").on('click',  function(e) {
+                    $.get( "/day/on", function( data ) {
+                      console.log('clock is on every day');
+                    });
+                });
+
+                $("#dayOff").on('click',  function(e) {
+                    $.get( "/day/off", function( data ) {
+                      console.log('clock is off every day');
+                    });
+                });
+            });
+            
+
+
+        </script>
+    </body>
+</html>
